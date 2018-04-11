@@ -43,16 +43,6 @@ class SSOAuthClient
         }
     }
 
-    private function getUserUrl()
-    {
-        return '/v1/public/me';
-    }
-
-    public function getUser()
-    {
-        $this->ssoAuthAdapterInterface->get($this->getUserUrl());
-    }
-
     private function getRequestTokenUrl()
     {
         return $this->apiBaseUri;
@@ -87,11 +77,6 @@ class SSOAuthClient
     {
         $queryParameters = [
             'clientId' => $this->publicKey,
-//            'client_id' => $this->publicKey,
-//            'redirect_uri' => $this->callbackUrl,
-//            'response_type' => 'code',
-//            'scope' => $this->scope,
-//            'state' => 6960840,
         ];
 
         $query   = http_build_query($queryParameters);
@@ -107,7 +92,6 @@ class SSOAuthClient
     public function refreshToken($refreshToken)
     {
         $params = [
-//            'clientId' => $this->publicKey,
             'refresh_token' => $refreshToken,
             'client_id'     => $this->publicKey,
             'client_secret' => $this->secretKey,
