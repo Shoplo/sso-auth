@@ -14,6 +14,7 @@ class SSOAuthClient
     public $refreshToken;
     public $apiBaseUri;
     public $scope;
+    public $ssoAppId;
 
     /**
      * SSOAuthClient constructor.
@@ -35,7 +36,10 @@ class SSOAuthClient
 
     public function authorize($returnUrl = false)
     {
-        if (isset($_GET['code'])) {
+        if (isset($_GET['code']) && isset($_GET['app_id'])) {
+
+            $this->ssoAppId = $_GET['app_id'];
+
             return $this->getAccessToken($_GET['code']);
         } else {
             return $this->requestToken($returnUrl);
