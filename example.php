@@ -13,7 +13,7 @@ define('CALLBACK_URL', 'http://127.0.0.1/sso-auth/example.php');
 $accessToken = $refreshToken = null;
 
 $config = [
-    'apiBaseUrl'   => 'http://auth.test.shoplo.io',
+    'apiBaseUrl'   => 'http://auth.shoplo.io',
     'publicKey'    => PUBLIC_KEY,
     'secretKey'    => SECRET_KEY,
     'callbackUrl'  => CALLBACK_URL,
@@ -22,7 +22,7 @@ $config = [
 ];
 
 $guzzleConfig = [
-    'base_uri' => 'http://auth.test.shoplo.io'
+    'base_uri' => 'http://auth.shoplo.io'
 ];
 
 $guzzleAdapter = new \SSOAuth\Guzzle\GuzzleAdapter(
