@@ -18,14 +18,14 @@ $config = [
     'secretKey'    => SECRET_KEY,
     'callbackUrl'  => CALLBACK_URL,
     'accessToken'  => $accessToken,
-    'refreshToken' => $refreshToken
+    'refreshToken' => $refreshToken,
 ];
 
 $guzzleConfig = [
-    'base_uri' => 'http://auth.shoplo.io'
+    'base_uri' => 'http://auth.shoplo.io',
 ];
 
-$guzzleAdapter = new \SSOAuth\Guzzle\GuzzleAdapter(
+$guzzleAdapter     = new \SSOAuth\Guzzle\GuzzleAdapter(
     new \GuzzleHttp\Client($guzzleConfig)
 );
 $shoploMultiClient = new \SSOAuth\SSOAuthClient(
@@ -34,5 +34,6 @@ $shoploMultiClient = new \SSOAuth\SSOAuthClient(
 );
 
 $response = $shoploMultiClient->authorize();
+echo $shoploMultiClient->ssoAppId;
 print_r($response);
 exit;
