@@ -37,68 +37,6 @@ class GuzzleAdapter implements SSOAuthAdapterInterface
 
     /**
      * @param       $url
-     * @param array $parameters
-     * @param array $headers
-     *
-     * @return string
-     * @throws \Exception
-     * @throws \SSOAuth\Exception\BackendException
-     * @throws \SSOAuth\Exception\NotFoundException
-     * @throws \SSOAuth\Exception\ValidationException
-     */
-    public function get($url, $parameters = [], $headers = [])
-    {
-        $headers = array_merge($headers, $this->getHeaders());
-
-        try {
-            $rsp = $this->guzzle->request(
-                'GET',
-                $url,
-                [
-                    'auth'    => 'oauth',
-                    'headers' => $headers,
-                ]
-            );
-
-            return $rsp->getBody()->getContents();
-        } catch (\GuzzleHttp\Exception\ServerException $e) {
-            ExceptionManager::throwException($e);
-        }
-    }
-
-    /**
-     * @param       $url
-     * @param array $data
-     * @param array $headers
-     *
-     * @return string
-     * @throws \Exception
-     * @throws \SSOAuth\Exception\BackendException
-     * @throws \SSOAuth\Exception\NotFoundException
-     * @throws \SSOAuth\Exception\ValidationException
-     */
-    public function put($url, $data = [], $headers = [])
-    {
-        try {
-            $headers = array_merge($headers, $this->getHeaders());
-            $rsp     = $this->guzzle->request(
-                'PUT',
-                $url,
-                [
-                    'auth'    => 'oauth',
-                    'headers' => $headers,
-                    'body'    => $data,
-                ]
-            );
-
-            return $rsp->getBody()->getContents();
-        } catch (\Exception $e) {
-            ExceptionManager::throwException($e);
-        }
-    }
-
-    /**
-     * @param       $url
      * @param array $data
      * @param array $headers
      *
@@ -123,33 +61,6 @@ class GuzzleAdapter implements SSOAuthAdapterInterface
             );
 
             return $rsp->getBody()->getContents();
-        } catch (\Exception $e) {
-            ExceptionManager::throwException($e);
-        }
-    }
-
-    /**
-     * @param       $url
-     * @param array $headers
-     *
-     * @return mixed
-     * @throws \Exception
-     */
-    public function delete($url, $headers = [])
-    {
-        try {
-            $headers = array_merge($headers, $this->getHeaders());
-            $rsp     = $this->guzzle->delete(
-                $url,
-                [
-                    'auth'    => 'oauth',
-                    'headers' => $headers,
-                ]
-            );
-
-            $json = \GuzzleHttp\json_decode($rsp->getBody(), true);
-
-            return $json;
         } catch (\Exception $e) {
             ExceptionManager::throwException($e);
         }

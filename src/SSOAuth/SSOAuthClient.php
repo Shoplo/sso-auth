@@ -31,7 +31,6 @@ class SSOAuthClient
         $this->accessToken  = $config['accessToken'];
         $this->refreshToken = $config['refreshToken'];
         $this->apiBaseUri   = $config['apiBaseUrl'];
-        $this->scope        = $config['scope'];
     }
 
     public function authorize($returnUrl = false)
@@ -99,7 +98,7 @@ class SSOAuthClient
             'redirect_uri'  => $this->callbackUrl,
         ];
 
-        $response = $this->ssoAuthAdapterInterface->get(
+        $response = $this->ssoAuthAdapterInterface->post(
             $this->getAccessTokenUrl($params),
             $params
         );
