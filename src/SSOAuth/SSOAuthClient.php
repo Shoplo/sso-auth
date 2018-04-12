@@ -10,10 +10,7 @@ class SSOAuthClient
     public $publicKey;
     public $secretKey;
     public $callbackUrl;
-    public $accessToken;
-    public $refreshToken;
     public $apiBaseUri;
-    public $scope;
     public $ssoAppId;
 
     /**
@@ -26,18 +23,15 @@ class SSOAuthClient
     {
         $this->ssoAuthAdapterInterface = $ssoAuthAdapterInterface;
 
-        $this->publicKey    = $config['publicKey'];
-        $this->secretKey    = $config['secretKey'];
-        $this->callbackUrl  = $config['callbackUrl'];
-        $this->accessToken  = $config['accessToken'];
-        $this->refreshToken = $config['refreshToken'];
-        $this->apiBaseUri   = $config['apiBaseUrl'];
+        $this->publicKey   = $config['publicKey'];
+        $this->secretKey   = $config['secretKey'];
+        $this->callbackUrl = $config['callbackUrl'];
+        $this->apiBaseUri  = $config['apiBaseUrl'];
     }
 
     public function authorize($returnUrl = false)
     {
         if (isset($_GET['code']) && isset($_GET['app_id'])) {
-
             $this->ssoAppId = $_GET['app_id'];
 
             return $this->getAccessToken($_GET['code']);
