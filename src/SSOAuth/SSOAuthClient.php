@@ -73,7 +73,7 @@ class SSOAuthClient
     public function requestToken($returnUrl = false)
     {
         $queryParameters = [
-            'clientId' => $this->publicKey,
+            'client_id' => $this->publicKey,
         ];
 
         $query   = http_build_query($queryParameters);
