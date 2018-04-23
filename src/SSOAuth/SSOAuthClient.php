@@ -26,7 +26,7 @@ class SSOAuthClient
         $this->publicKey   = $config['publicKey'];
         $this->secretKey   = $config['secretKey'];
         $this->callbackUrl = $config['callbackUrl'];
-        $this->apiBaseUri  = $config['apiBaseUrl'];
+        $this->apiBaseUri  = $config['authBaseUrl'];
     }
 
     public function authorize($returnUrl = false)
