@@ -1,6 +1,7 @@
 {
   "name": "shoplo/sso-auth",
-  "version": "1.0",
+  "license": "MIT",
+  "homepage": "https://www.shoplo.com/",
   "autoload": {
     "psr-0": {
       "SSOAuth": "src/"
@@ -8,5 +9,10 @@
   },
   "require": {
     "guzzlehttp/oauth-subscriber": "^0.3.0"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
   }
 }
